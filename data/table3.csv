@@ -1,5 +1,4 @@
 Forest tenure,ACT,NSW,NT,Qld,SA,Tas,Vic,WA,Total
-Native forest area ('000 hectares),,,,,,,,,,
 Leasehold forest,8,4249,9318,28135,1447,0,0,4089,47246
 Multiple-use public forest,5,1856,0,2881,22,612,3052,1344,9772
 Nature conservation reserve,113,5569,15,4378,1698,1544,3367,5035,21719
@@ -7,7 +6,8 @@ Other Crown land,5,755,881,1308,91,380,241,7382,11042
 Private forest,0,7414,13435,14213,1580,806,984,2600,41031
 Unresolved tenure,0,81,38,666,20,0,0,0,805
 Total native forest,130,19925,23686,51580,4856,3342,7645,20450,131615
-Native forest in burnt area ('000 hectares),,,,,,,,,,
+
+Native forest in burnt area ('000 hectares),ACT,NSW,NT,Qld,SA,Tas,Vic,WA,Total
 Leasehold forest,3,19,0,11,22,0,0,50,105
 Multiple-use public forest,0,880,0,99,0,10,878,31,1899
 Nature conservation reserve,80,2750,0,132,62,3,496,286,3808
@@ -15,7 +15,8 @@ Other Crown land,0,109,0,28,0,6,13,749,906
 Private forest,0,1254,0,94,33,7,57,22,1467
 Unresolved tenure,0,2,0,2,0,0,0,0,5
 Total native forest in burnt area,83,5014,0,367,118,27,1444,1138,8190
-Proportion of native forest in burnt area (%),,,,,,,,,,
+
+Proportion of native forest in burnt area (%),ACT,NSW,NT,Qld,SA,Tas,Vic,WA,Total
 Leasehold forest,33,0.5,0,0.0,1.5,0.0,0.0,1.2,0.2
 Multiple-use public forest,5.1,47,0,3.4,1.2,1.7,29,2.3,19
 Nature conservation reserve,71,49,0,3.0,3.6,0.2,15,5.7,18
