@@ -1,0 +1,101 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/weather_state_aggregated.csv",
+    "format": {"type": "csv"}
+  },
+  "width": 800,
+  "height": 600,
+  "transform": [
+    {
+      "fold": [
+        "MaxTemp",
+        "Rainfall",
+        "WindGustSpeed",
+        "Humidity3pm",
+        "Pressure3pm"
+      ],
+      "as": ["Variable", "Value"]
+    },
+    {
+      "window": [
+        {"op": "min", "field": "Value", "as": "MinValue"},
+        {"op": "max", "field": "Value", "as": "MaxValue"}
+      ],
+      "groupby": ["Variable"]
+    },
+    {
+      "calculate": "(datum.Value - datum.MinValue) / (datum.MaxValue - datum.MinValue)",
+      "as": "NormalizedValue"
+    },
+    {
+      "calculate": "datum.Variable == 'MaxTemp' ? 'Max Temperature (°C)' : datum.Variable == 'Rainfall' ? 'Rainfall (mm)' : datum.Variable == 'WindGustSpeed' ? 'Wind Gust Speed (km/h)' : datum.Variable == 'Humidity3pm' ? 'Humidity at 3pm (%)' : 'Pressure at 3pm (hPa)'",
+      "as": "VariableFull"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "tooltip": true,
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "Variable",
+          "type": "nominal",
+          "title": "Weather Variables"
+        },
+        "y": {
+          "field": "NormalizedValue",
+          "type": "quantitative",
+          "title": "Normalized Value (0-1)"
+        },
+        "color": {"field": "Location", "type": "nominal", "title": "State"},
+        "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.3},
+        "tooltip": [
+          {"field": "Location", "type": "nominal", "title": "State"},
+          {
+            "field": "VariableFull",
+            "type": "nominal",
+            "title": "Weather Attribute"
+          },
+          {"field": "Value", "type": "quantitative", "title": "Value"}
+        ]
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
+        }
+      ]
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 50},
+      "encoding": {
+        "x": {
+          "field": "Variable",
+          "type": "nominal",
+          "title": "Weather Variables"
+        },
+        "y": {
+          "field": "NormalizedValue",
+          "type": "quantitative",
+          "title": "Normalized Value (0-1)"
+        },
+        "color": {"field": "Location", "type": "nominal"},
+        "tooltip": [
+          {"field": "Location", "type": "nominal", "title": "State"},
+          {
+            "field": "VariableFull",
+            "type": "nominal",
+            "title": "Weather Attribute"
+          },
+          {"field": "Value", "type": "quantitative", "title": "Value"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
