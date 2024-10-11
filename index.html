@@ -10,14 +10,30 @@
 </head>
 <body>
   <h1>Fire Data Visualization</h1>
-  <div id="vis"></div>
+
+  <!-- Divs for each chart -->
+  <div id="map_vis"></div>
+  <div id="donut_vis"></div>
+  <div id="parallel_vis"></div>
 
   <script type="text/javascript">
-    const spec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/main_map.json";
-    vegaEmbed('#vis', spec).then(result => {
-      console.log(result);
+    // Embed the main map chart
+    const mapSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/main_map.json";
+    vegaEmbed('#map_vis', mapSpec).then(result => {
+      console.log("Map visualization loaded", result);
+    }).catch(console.warn);
+
+    // Embed the double donut chart
+    const donutSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/double_donut.json";
+    vegaEmbed('#donut_vis', donutSpec).then(result => {
+      console.log("Double donut visualization loaded", result);
+    }).catch(console.warn);
+
+    // Embed the parallel chart
+    const parallelSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/parallel.json";
+    vegaEmbed('#parallel_vis', parallelSpec).then(result => {
+      console.log("Parallel coordinates visualization loaded", result);
     }).catch(console.warn);
   </script>
 </body>
 </html>
-
