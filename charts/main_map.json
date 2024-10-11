@@ -21,7 +21,6 @@
   ],
   "layer": [
     {
-      // Layer for the ocean
       "data": {
         "url": "https://raw.githubusercontent.com/prakritd2/FIT3179/refs/heads/main/ne_50m.json",
         "format": {
@@ -36,7 +35,6 @@
       }
     },
     {
-      // Layer for the countries
       "data": {
         "url": "https://raw.githubusercontent.com/prakritd2/FIT3179/refs/heads/main/ne_50m.json",
         "format": {
@@ -51,7 +49,6 @@
       }
     },
     {
-      // Layer for provinces and states
       "data": {
         "url": "https://raw.githubusercontent.com/prakritd2/FIT3179/refs/heads/main/ne_50m.json",
         "format": {
@@ -66,7 +63,6 @@
       }
     },
     {
-      // Layer for graticules (set to black)
       "data": {
         "url": "https://raw.githubusercontent.com/prakritd2/FIT3179/refs/heads/main/ne_50m.json",
         "format": {
@@ -80,7 +76,6 @@
       }
     },
     {
-      // Layer for fire data visualization with confidence and FRP filter
       "data": {
         "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/fire_archive_M6_96619.csv"
       },
@@ -89,12 +84,12 @@
           "filter": "datum.confidence > 90 && datum.frp > frpThreshold"
         },
         {
-          "sort": [{"field": "frp", "order": "descending"}]  // Sort by FRP to bring higher values to front
+          "sort": [{"field": "frp", "order": "descending"}]
         }
       ],
       "mark": {
         "type": "circle",
-        "opacity": 0.5  // Set opacity to 60%
+        "opacity": 0.5
       },
       "encoding": {
         "longitude": {
@@ -113,15 +108,15 @@
             "domain": [0, 1]
           }
         },
-  "color": {
-    "field": "frp",
-    "type": "quantitative",
-    "title": "Fire Radiative Power (FRP)",
-    "scale": {
-      "domain": [100, 1000, 2000],
-      "range": ["#FFA500", "#FF4500", "#8B0000"]  // Light orange to dark red
-    }
-  },
+        "color": {
+          "field": "frp",
+          "type": "quantitative",
+          "title": "Fire Radiative Power (FRP)",
+          "scale": {
+            "domain": [100, 1000, 2000],
+            "range": ["#FFA500", "#FF4500", "#8B0000"]
+          }
+        },
         "tooltip": [
           {
             "field": "acq_date",
