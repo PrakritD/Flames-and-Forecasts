@@ -3,9 +3,7 @@
   "width": 800,
   "height": 450,
   "title": "Fire Data Visualization",
-  "projection": {
-    "type": "mercator"
-  },
+  "projection": {"type": "mercator", "scale": 650, "center": [500, -28]},
   "params": [
     {
       "name": "frpThreshold",
@@ -22,91 +20,52 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/prakritd2/FIT3179/refs/heads/main/ne_50m.json",
-        "format": {
-          "type": "topojson",
-          "feature": "ne_50m_ocean"
-        }
+        "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/ne_50m.json",
+        "format": {"type": "topojson", "feature": "ne_50m_admin_0_countries"}
       },
-      "mark": {
-        "type": "geoshape",
-        "fill": "lightblue",
-        "stroke": null
-      }
+      "mark": {"type": "geoshape", "fill": "yellowgreen", "stroke": "black"}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/prakritd2/FIT3179/refs/heads/main/ne_50m.json",
-        "format": {
-          "type": "topojson",
-          "feature": "ne_50m_admin_0_countries"
-        }
+        "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/ne_50m.json",
+        "format": {"type": "topojson", "feature": "ne_50m_ocean"}
       },
-      "mark": {
-        "type": "geoshape",
-        "fill": "yellowgreen",
-        "stroke": "black"
-      }
+      "mark": {"type": "geoshape", "fill": "lightblue", "stroke": null}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/prakritd2/FIT3179/refs/heads/main/ne_50m.json",
+        "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/ne_50m.json",
         "format": {
           "type": "topojson",
           "feature": "ne_50m_admin_1_states_provinces"
         }
       },
-      "mark": {
-        "type": "geoshape",
-        "fill": null,
-        "stroke": "black"
-      }
+      "mark": {"type": "geoshape", "fill": null, "stroke": "black"}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/prakritd2/FIT3179/refs/heads/main/ne_50m.json",
-        "format": {
-          "type": "topojson",
-          "feature": "ne_50m_graticules_5"
-        }
+        "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/ne_50m.json",
+        "format": {"type": "topojson", "feature": "ne_50m_graticules_5"}
       },
-      "mark": {
-        "type": "geoshape",
-        "stroke": "gray"
-      }
+      "mark": {"type": "geoshape", "stroke": "gray"}
     },
     {
       "data": {
         "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/fire_archive_M6_96619.csv"
       },
       "transform": [
-        {
-          "filter": "datum.confidence > 90 && datum.frp > frpThreshold"
-        },
-        {
-          "sort": [{"field": "frp", "order": "descending"}]
-        }
+        {"filter": "datum.confidence > 90 && datum.frp > frpThreshold"},
+        {"sort": [{"field": "frp", "order": "descending"}]}
       ],
-      "mark": {
-        "type": "circle",
-        "opacity": 0.5
-      },
+      "mark": {"type": "circle", "opacity": 0.5},
       "encoding": {
-        "longitude": {
-          "field": "longitude",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "latitude",
-          "type": "quantitative"
-        },
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
         "size": {
           "field": "scan",
           "type": "quantitative",
           "title": "Scan",
-          "scale": {
-            "domain": [0, 1]
-          }
+          "scale": {"domain": [0, 1]}
         },
         "color": {
           "field": "frp",
@@ -130,18 +89,11 @@
             "type": "quantitative",
             "title": "Fire Radiative Power (FRP)"
           },
-          {
-            "field": "scan",
-            "type": "quantitative",
-            "title": "Scan Size"
-          },
-          {
-            "field": "brightness",
-            "type": "quantitative",
-            "title": "Brightness"
-          }
+          {"field": "scan", "type": "quantitative", "title": "Scan Size"},
+          {"field": "brightness", "type": "quantitative", "title": "Brightness"}
         ]
       }
     }
-  ]
+  ],
+  "config": {}
 }
