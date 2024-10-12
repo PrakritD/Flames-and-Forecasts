@@ -9,28 +9,36 @@
   "transform": [
     {
       "fold": [
-        "MaxTemp",
-        "Rainfall",
-        "WindGustSpeed",
-        "Humidity3pm",
+        "MaxTemp", 
+        "Rainfall", 
+        "WindGustSpeed", 
+        "Humidity3pm", 
         "Pressure3pm"
       ],
       "as": ["Variable", "Value"]
     },
     {
+      "calculate": "datum.Variable == 'MaxTemp' ? 'Max Temperature (°C)' : datum.Variable == 'Rainfall' ? 'Rainfall (mm)' : datum.Variable == 'WindGustSpeed' ? 'Wind Gust Speed (km/h)' : datum.Variable == 'Humidity3pm' ? 'Humidity at 3pm (%)' : 'Pressure at 3pm (hPa)'",
+      "as": "VariableFull"
+    },
+    {
       "window": [
-        {"op": "min", "field": "Value", "as": "MinValue"},
-        {"op": "max", "field": "Value", "as": "MaxValue"}
+        {
+          "op": "min",
+          "field": "Value",
+          "as": "MinValue"
+        },
+        {
+          "op": "max",
+          "field": "Value",
+          "as": "MaxValue"
+        }
       ],
-      "groupby": ["Variable"]
+      "groupby": ["VariableFull"]
     },
     {
       "calculate": "(datum.Value - datum.MinValue) / (datum.MaxValue - datum.MinValue)",
       "as": "NormalizedValue"
-    },
-    {
-      "calculate": "datum.Variable == 'MaxTemp' ? 'Max Temperature (°C)' : datum.Variable == 'Rainfall' ? 'Rainfall (mm)' : datum.Variable == 'WindGustSpeed' ? 'Wind Gust Speed (km/h)' : datum.Variable == 'Humidity3pm' ? 'Humidity at 3pm (%)' : 'Pressure at 3pm (hPa)'",
-      "as": "VariableFull"
     }
   ],
   "layer": [
@@ -43,24 +51,31 @@
       },
       "encoding": {
         "x": {
-          "field": "Variable",
+          "field": "VariableFull",
           "type": "nominal",
-          "title": "Weather Variables"
+          "title": "Weather Variables",
+          "axis": {
+            "labelAngle": -45,
+            "labelFontSize": 12
+          }
         },
         "y": {
           "field": "NormalizedValue",
           "type": "quantitative",
           "title": "Normalized Value (0-1)"
         },
-        "color": {"field": "Location", "type": "nominal", "title": "State"},
-        "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.3},
+        "color": {
+          "field": "Location",
+          "type": "nominal",
+          "title": "State"
+        },
+        "opacity": {
+          "condition": {"param": "hover", "value": 1},
+          "value": 0.3
+        },
         "tooltip": [
           {"field": "Location", "type": "nominal", "title": "State"},
-          {
-            "field": "VariableFull",
-            "type": "nominal",
-            "title": "Weather Attribute"
-          },
+          {"field": "VariableFull", "type": "nominal", "title": "Weather Attribute"},
           {"field": "Value", "type": "quantitative", "title": "Value"}
         ]
       },
@@ -72,30 +87,36 @@
       ]
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 50},
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 50
+      },
       "encoding": {
         "x": {
-          "field": "Variable",
+          "field": "VariableFull",
           "type": "nominal",
-          "title": "Weather Variables"
+          "title": "Weather Variables",
+          "axis": {
+            "labelAngle": -45,
+            "labelFontSize": 12
+          }
         },
         "y": {
           "field": "NormalizedValue",
           "type": "quantitative",
           "title": "Normalized Value (0-1)"
         },
-        "color": {"field": "Location", "type": "nominal"},
+        "color": {
+          "field": "Location",
+          "type": "nominal"
+        },
         "tooltip": [
           {"field": "Location", "type": "nominal", "title": "State"},
-          {
-            "field": "VariableFull",
-            "type": "nominal",
-            "title": "Weather Attribute"
-          },
+          {"field": "VariableFull", "type": "nominal", "title": "Weather Attribute"},
           {"field": "Value", "type": "quantitative", "title": "Value"}
         ]
       }
     }
-  ],
-  "config": {}
+  ]
 }
