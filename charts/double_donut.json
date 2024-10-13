@@ -76,7 +76,7 @@
                     ],
                     "name": "Forest Type"
                   },
-                  "init": {"Forest tenure": "Total native forest"}  // Default to Total Forest
+                  "init": {"Forest tenure": "Total native forest"}
                 }
               },
               "transform": [
