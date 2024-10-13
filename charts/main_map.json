@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1000,
-  "height": 825,
+  "width": 750,
+  "height": 619,
   "projection": {
     "type": "mercator",
-    "scale": 1200,
+    "scale": 900,
     "center": [495, -28.25]
   },
   "config": {
@@ -88,7 +88,7 @@
       },
       "transform": [
         {
-          "filter": "datum.confidence > 90 && datum.frp > frpThreshold"
+          "filter": "datum.confidence > 80 && datum.frp > frpThreshold"
         },
         {
           "sort": [{"field": "frp", "order": "descending"}]
@@ -96,7 +96,7 @@
       ],
       "mark": {
         "type": "circle",
-        "opacity": 0.6
+        "opacity": 0.7
       },
       "encoding": {
         "longitude": {
@@ -117,7 +117,7 @@
           "legend": {
             "orient": "none",
             "direction": "vertical",
-            "legendX": 950,
+            "legendX": 700,
             "legendY": 290,
             "title": "Fire Size"
           }
@@ -133,7 +133,7 @@
           "legend": {
             "orient": "none",
             "direction": "vertical",
-            "legendX": 950,
+            "legendX": 700,
             "legendY": 45,
             "title": "FRP"
           }
