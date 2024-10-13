@@ -1,11 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1200,
-  "height": 800,
+  "width": 1000,
+  "height": 825,
   "projection": {
     "type": "mercator",
     "scale": 1200,
-    "center": [500, -28.25]
+    "center": [495, -28.25]
   },
   "config": {
     "background": "#F5F5F5", 
@@ -117,7 +117,7 @@
           "legend": {
             "orient": "none",
             "direction": "vertical",
-            "legendX": 1070,
+            "legendX": 950,
             "legendY": 290,
             "title": "Fire Size"
           }
@@ -133,7 +133,7 @@
           "legend": {
             "orient": "none",
             "direction": "vertical",
-            "legendX": 1070,
+            "legendX": 950,
             "legendY": 45,
             "title": "FRP"
           }
