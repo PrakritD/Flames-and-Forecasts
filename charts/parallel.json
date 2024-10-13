@@ -4,8 +4,8 @@
     "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/weather_state_aggregated.csv",
     "format": {"type": "csv"}
   },
-  "width": 800,
-  "height": 600,
+  "width": 750,
+  "height": 400,
   "transform": [
     {
       "fold": [
