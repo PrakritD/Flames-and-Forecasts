@@ -5,7 +5,7 @@
     "format": {"type": "csv"}
   },
   "width": 750,
-  "height": 375,
+  "height": 365,
   "config": {
     "background": "#F5F5F5"
   },
