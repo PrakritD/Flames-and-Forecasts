@@ -89,7 +89,13 @@
               },
               "encoding": {
                 "theta": {"field": "Value", "type": "quantitative"},
-                "color": {"field": "State", "type": "nominal"},
+                "color": {
+                  "field": "State",
+                  "type": "nominal",
+                  "legend": {
+                    "offset": -7
+                  }
+                },
                 "tooltip": [
                   {"field": "State", "title": "State", "type": "nominal"},
                   {"field": "Value", "title": "Total Area (Hectares)", "type": "quantitative"}
@@ -113,7 +119,13 @@
               },
               "encoding": {
                 "theta": {"field": "Value", "type": "quantitative"},
-                "color": {"field": "State", "type": "nominal"},
+                "color": {
+                  "field": "State",
+                  "type": "nominal",
+                  "legend": {
+                    "offset": -7
+                  }
+                },
                 "tooltip": [
                   {"field": "State", "title": "State", "type": "nominal"},
                   {"field": "Value", "title": "Burnt Area (Hectares)", "type": "quantitative"}
