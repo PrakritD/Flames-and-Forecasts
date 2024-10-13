@@ -101,6 +101,18 @@
                   {"field": "Value", "title": "Total Area (Hectares)", "type": "quantitative"}
                 ]
               }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "fontSize": 28
+              },
+              "encoding": {
+                "text": {"value": "Total Forest Area"},
+                "x": {"value": 160},
+                "y": {"value": 160}
+              }
             }
           ]
         },
@@ -130,6 +142,18 @@
                   {"field": "State", "title": "State", "type": "nominal"},
                   {"field": "Value", "title": "Burnt Area (Hectares)", "type": "quantitative"}
                 ]
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "fontSize": 28
+              },
+              "encoding": {
+                "text": {"value": "Burnt Forest Area"},
+                "x": {"value": 160},
+                "y": {"value": 160}
               }
             }
           ]
