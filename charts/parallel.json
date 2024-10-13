@@ -5,7 +5,7 @@
     "format": {"type": "csv"}
   },
   "width": 750,
-  "height": 400,
+  "height": 375,
   "config": {
     "background": "#F5F5F5"
   },
@@ -56,16 +56,19 @@
         "x": {
           "field": "VariableFull",
           "type": "nominal",
-          "title": "Weather Variables",
           "axis": {
-            "labelAngle": -45,
-            "labelFontSize": 12
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "title": null
           }
         },
         "y": {
           "field": "NormalizedValue",
           "type": "quantitative",
-          "title": "Normalized Value (0-1)"
+          "title": "Normalized Value",
+          "axis": {
+            "labelFontSize": 12
+          }
         },
         "color": {
           "field": "Location",
@@ -101,16 +104,19 @@
         "x": {
           "field": "VariableFull",
           "type": "nominal",
-          "title": "Weather Variables",
           "axis": {
-            "labelAngle": -45,
-            "labelFontSize": 12
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "title": null
           }
         },
         "y": {
           "field": "NormalizedValue",
           "type": "quantitative",
-          "title": "Normalized Value (0-1)"
+          "title": "Normalized Value",
+          "axis": {
+            "labelFontSize": 12
+          }
         },
         "color": {
           "field": "Location",
