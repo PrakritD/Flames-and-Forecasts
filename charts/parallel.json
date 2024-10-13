@@ -4,8 +4,8 @@
     "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/weather_state_aggregated.csv",
     "format": {"type": "csv"}
   },
-  "width": 740,
-  "height": 365,
+  "width": 750,
+  "height": 375,
   "config": {
     "background": "#F5F5F5"
   },
@@ -46,6 +46,13 @@
   ],
   "layer": [
     {
+      "selection": {
+        "highlight": {
+          "type": "single",
+          "on": "mouseover",
+          "empty": "all" 
+        }
+      },
       "mark": {
         "type": "line",
         "point": true,
@@ -77,10 +84,10 @@
         },
         "opacity": {
           "condition": {
-            "test": "datum.Variable == 'MaxTemp' && datum.Location == 'NSW' && datum.NormalizedValue >= 0.3 && datum.NormalizedValue <= 0.6",
-            "value": 0.3
+            "selection": "highlight",
+            "value": 1
           },
-          "value": 1
+          "value": 0.2
         },
         "tooltip": [
           {"field": "Location", "type": "nominal", "title": "State"},
@@ -121,6 +128,13 @@
         "color": {
           "field": "Location",
           "type": "nominal"
+        },
+        "opacity": {
+          "condition": {
+            "selection": "highlight",
+            "value": 1
+          },
+          "value": 0.2
         },
         "tooltip": [
           {"field": "Location", "type": "nominal", "title": "State"},
