@@ -3,25 +3,32 @@
   "data": {
     "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/table3.csv"
   },
+  "config": {
+    "background": "#F5F5F5",
+    "style": {
+      "guide-label": {
+        "fill": "black",
+        "font": "Avant Garde"
+      },
+      "guide-title": {
+        "fill": "black",
+        "font": "Avant Garde"
+      }
+    },
+    "arc": {
+      "fill": "#F5F5F5"
+    },
+    "tooltip": {
+      "background": "#F5F5F5",
+      "color": "black",
+      "font": "Avant Garde"
+    }
+  },
   "transform": [
     {
       "fold": [
-        "ACT",
-        "NSW",
-        "NT",
-        "Qld",
-        "SA",
-        "Tas",
-        "Vic",
-        "WA",
-        "BurntACT",
-        "BurntNSW",
-        "BurntNT",
-        "BurntQld",
-        "BurntSA",
-        "BurntTas",
-        "BurntVic",
-        "BurntWA"
+        "ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA",
+        "BurntACT", "BurntNSW", "BurntNT", "BurntQld", "BurntSA", "BurntTas", "BurntVic", "BurntWA"
       ],
       "as": ["State", "Value"]
     },
@@ -29,82 +36,120 @@
       "calculate": "substring(datum.State, 0, 5) == 'Burnt' ? 'Burnt' : 'Total'",
       "as": "AreaType"
     },
-    {"calculate": "replace(datum.State, 'Burnt', '')", "as": "State"},
-    {"calculate": "upper(datum.State)", "as": "State"}
+    {
+      "calculate": "replace(datum.State, 'Burnt', '')",
+      "as": "State"
+    },
+    {
+      "calculate": "upper(datum.State)",
+      "as": "State"
+    }
   ],
   "vconcat": [
     {
       "hconcat": [
         {
-          "title": {"text": "Total Area by State", "fontSize": 20},
-          "selection": {
-            "forest_type": {
-              "type": "single",
-              "fields": ["Forest tenure"],
-              "bind": {
-                "input": "select",
-                "options": [
-                  "Leasehold forest",
-                  "Multiple-use public forest",
-                  "Nature conservation reserve",
-                  "Other Crown land",
-                  "Private forest",
-                  "Unresolved tenure",
-                  "Total native forest"
-                ],
-                "labels": [
-                  "Leasehold Forest",
-                  "Multiple-use Public Forest",
-                  "Nature Conservation Reserve",
-                  "Other Crown Land",
-                  "Private Forest",
-                  "Unresolved Tenure",
-                  "Total Forest"
-                ],
-                "name": "Forest Type"
+          "width": 400,
+          "height": 400,
+          "layer": [
+            {
+              "selection": {
+                "forest_type": {
+                  "type": "single",
+                  "fields": ["Forest tenure"],
+                  "bind": {
+                    "input": "select",
+                    "options": [
+                      "Leasehold forest", 
+                      "Multiple-use public forest", 
+                      "Nature conservation reserve", 
+                      "Other Crown land", 
+                      "Private forest", 
+                      "Unresolved tenure", 
+                      "Total native forest"
+                    ],
+                    "labels": [
+                      "Leasehold Forest", 
+                      "Multiple-use Public Forest", 
+                      "Nature Conservation Reserve", 
+                      "Other Crown Land", 
+                      "Private Forest", 
+                      "Unresolved Tenure", 
+                      "Total Forest"
+                    ],
+                    "name": "Forest Type"
+                  }
+                }
+              },
+              "transform": [
+                {"filter": {"selection": "forest_type"}},
+                {"filter": "datum.AreaType == 'Total'"}
+              ],
+              "mark": {
+                "type": "arc",
+                "innerRadius": 150
+              },
+              "encoding": {
+                "theta": {"field": "Value", "type": "quantitative"},
+                "color": {"field": "State", "type": "nominal"},
+                "tooltip": [
+                  {"field": "State", "title": "State", "type": "nominal"},
+                  {"field": "Value", "title": "Total Area (Hectares)", "type": "quantitative"}
+                ]
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "fontSize": 50,
+                "font": "Avant Garde",
+                "dy": -1
+              },
+              "encoding": {
+                "text": {"value": "Total Area"}
               }
             }
-          },
-          "transform": [
-            {"filter": {"selection": "forest_type"}},
-            {"filter": "datum.AreaType == 'Total'"}
-          ],
-          "mark": {"type": "arc", "innerRadius": 75},
-          "encoding": {
-            "theta": {"field": "Value", "type": "quantitative"},
-            "color": {"field": "State", "type": "nominal"},
-            "tooltip": [
-              {"field": "State", "title": "State", "type": "nominal"},
-              {
-                "field": "Value",
-                "title": "Total Area (Hectares)",
-                "type": "quantitative"
-              }
-            ]
-          }
+          ]
         },
         {
-          "title": {"text": "Burnt Area by State", "fontSize": 20},
-          "transform": [
-            {"filter": {"selection": "forest_type"}},
-            {"filter": "datum.AreaType == 'Burnt'"}
-          ],
-          "mark": {"type": "arc", "innerRadius": 75},
-          "encoding": {
-            "theta": {"field": "Value", "type": "quantitative"},
-            "color": {"field": "State", "type": "nominal"},
-            "tooltip": [
-              {"field": "State", "title": "State", "type": "nominal"},
-              {
-                "field": "Value",
-                "title": "Burnt Area (Hectares)",
-                "type": "quantitative"
+          "width": 400,
+          "height": 400
+          ,
+          "layer": [
+            {
+              "transform": [
+                {"filter": {"selection": "forest_type"}},
+                {"filter": "datum.AreaType == 'Burnt'"}
+              ],
+              "mark": {
+                "type": "arc",
+                "innerRadius": 150
+              },
+              "encoding": {
+                "theta": {"field": "Value", "type": "quantitative"},
+                "color": {"field": "State", "type": "nominal"},
+                "tooltip": [
+                  {"field": "State", "title": "State", "type": "nominal"},
+                  {"field": "Value", "title": "Burnt Area (Hectares)", "type": "quantitative"}
+                ]
               }
-            ]
-          }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "fontSize": 50,
+                "font": "Avant Garde",
+                "dy": -1
+              },
+              "encoding": {
+                "text": {"value": "Burnt Area"}
+              }
+            }
+          ]
         }
       ]
     }
-  ],
-  "config": {}
+  ]
 }
