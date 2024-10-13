@@ -16,7 +16,7 @@
   "params": [
     {
       "name": "frpThreshold",
-      "value": 750,
+      "value": 100,
       "bind": {
         "input": "range",
         "min": 100,
