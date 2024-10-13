@@ -7,6 +7,9 @@
     "scale": 1200,
     "center": [495, -28.25]
   },
+  "config": {
+    "background": "#F5F5F5"
+  },
   "params": [
     {
       "name": "frpThreshold",
@@ -73,7 +76,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "stroke": "#ebebeb"
+        "stroke": "#F5F5F5"
       }
     },
     {
