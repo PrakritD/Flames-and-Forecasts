@@ -4,34 +4,316 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fire Data Visualization</title>
+  
+  <style>
+    /* Global Styles */
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    body {
+      font-family: 'Avant Garde', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #FFE4C4;
+      color: #1d1d1f;
+      overflow-x: hidden; /* Remove horizontal scrolling */
+    }
+
+    header {
+      background-color: #FF6A4D;
+      color: white;
+      padding: 15px 0px;
+      text-align: center;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%); /* Centering the header */
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 6.5rem;
+      margin: 0.75;
+    }
+
+    header p {
+      font-family: 'Avant Garde', sans-serif;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
+    .main-content {
+      padding: 40px 20px;
+      background-color: #FFDAB5;
+    }
+
+    .container-large {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #F5F5F5;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .container-large h1{
+      font-family: 'Avant Garde', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #FF6347;
+      width: 100%;
+      text-align: center;
+    }
+
+    .sub-container {
+      margin-bottom: 40px;
+      display: flex; /* Flexbox for side by side layout */
+      align-items: flex-start;
+    }
+    
+    .map-container {
+      width: 65%; /* Set fixed width */
+      height: 685px; /* Set fixed height keeping aspect ratio */
+      background-color: #F5F5F5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Visual container (chart) */
+    .chart-container {
+      width: 65%;
+      height: 400px;
+      background-color: #F5F5F5;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .text-container {
+      width: 30%;
+      margin-left: 20px;
+      padding: 20px;
+      background-color: #F5F5F5;
+      border-radius: 15px;
+      color: #1d1d1f;
+      font-family: 'Avant Garde', sans-serif;
+      line-height: 1.6;
+    }
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 450px;
+  background-color: #f5f5f5;
+  color: #333;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the text */
+  left: 50%;
+  margin-left: -225px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-style: italic; /* Italicized all text inside tooltip */
+}
+
+/* Tooltip arrow */
+.tooltip .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #f5f5f5 transparent transparent transparent;
+}
+
+/* Show the tooltip on hover */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+/* Bold, underlined, and italic for the feature title */
+.tooltip .tooltip-text span {
+  font-weight: bold;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #FF6A4D;
+      color: white;
+      margin-top: 40px;
+    }
+
+    footer:hover {
+      background-color: #FF7043;
+    }
+
+    @font-face {
+      font-family: 'Avant Garde';
+      src: url('https://fonts.cdnfonts.com/s/15109/avantgarde-book-webfont.woff') format('woff');
+    }
+  </style>
+
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
-<body>
-  <h1>Fire Data Visualization</h1>
 
-  <!-- Divs for each chart -->
-  <div id="map_vis"></div>
-  <div id="donut_vis"></div>
-  <div id="parallel_vis"></div>
+<body>
+  <!-- Page header -->
+  <header>
+    <div class="header-wrapper">
+      <h1>Flames and Forecasts</h1>
+      <p>A Visual Snapshot of Australia’s Climate and Bushfire Patterns</p>
+    </div>
+  </header>
+
+  <!-- Main Content Section -->
+  <section class="main-content">
+    <div class="container-large">
+      
+      <!-- Sub-container for Fire Data Map -->
+      <h1>Fire Intensity and Distribution Map</h1>
+      <div class="sub-container"> <!-- Subheading placed above map and text container -->
+        <div class="map-container" id="map_vis">
+          <!-- Chart will be embedded here -->
+        </div>
+
+        <div class="text-container">
+  <h2>About the Chart</h2>
+  <p>This chart displays wildfire data across different regions. It highlights key areas affected by wildfires and allows for interactive exploration.</p>
+
+  <p><strong>Key Observations:</strong></p>
+  <ul class="chart-features" style="list-style-type: disc; padding-left: 0;">
+    <li>More wildfires are detected near the coast.</li>
+    <li>NSW, QLD, and NT tend to be especially vulnerable to wildfires.</li>
+    <li>The majority of detected fires have low intensity, with FRP values below 500.</li>
+    <li>The highest detected fire in NSW had nearly double the FRP of the second highest.</li>
+  </ul>
+
+  <div class="tooltip">
+    <strong>Hover here for chart features</strong>
+    <div class="tooltip-text">
+      <p><span>Customizable Slider:</span> Filter data by adjusting the threshold for fire intensity.</p>
+      <p><span>Interactive Tooltips:</span> Hover over points to see details like date and fire size.</p>
+      <p><span>Color and Size Encoding:</span> Colors and sizes represent fire intensity and size.</p>
+      <p><span>Legend:</span> Understand data with the help of a color-coded legend.</p>
+    </div>
+  </div>
+  
+</div>
+
+      </div>
+
+      <!-- Sub-container for Double Donut Chart -->
+      <h1>Distribution of Fire Types</h1>
+      <div class="sub-container">
+        <div class="text-container" style="float: left; width: 30%;">
+          <h2>About Forest Areas</h2>
+          <p>This chart displays the distribution of total and burnt forest areas across different types of forests in various states. It allows users to explore wildfire impacts on different forest types interactively.</p>
+        
+          <p><strong>Key Observations:</strong></p>
+          <ul class="chart-features" style="list-style-type: disc; padding-left: 0;">
+            <li>NSW has a higher burnt area than total forest.</li>
+            <li>NT has a lower burnt area than total forest.</li>
+          </ul>
+        
+          <div class="tooltip">
+            <strong>Hover here for chart features</strong>
+            <div class="tooltip-text">
+              <p><span>Interactive Tooltips:</span> View exact values for total and burnt forest areas by state and forest type.</p>
+              <p><span>Dropdown for Forest Type:</span> Use the dropdown menu to filter the chart by specific forest types (e.g., nature reserves, private forests).</p>
+            </div>
+          </div>
+          
+          
+        </div>
+        
+      
+        <!-- Chart placed on the right -->
+        <div class="chart-container" id="donut_vis" style="float: right; width: 60%;">
+          <!-- Donut chart will be embedded here -->
+          <div style="text-align: center;">
+            <h2>Total Area</h2>
+            <div id="total-area-chart"></div>
+          </div>
+          <div style="text-align: center;">
+            <h2>Burnt Area</h2>
+            <div id="burnt-area-chart"></div>
+          </div>
+        </div>
+        <div style="clear: both;"></div> <!-- Clear floats -->
+      </div>
+
+      <!-- Sub-container for Parallel Coordinates -->
+      <h1>Parallel Analysis of Bushfire Risk Metrics</h1>
+      <div class="sub-container">
+        <div class="chart-container" id="parallel_vis" >
+          <!-- Chart will be embedded here -->
+        </div>
+        <div class="text-container">
+          <h2>About the Parallel Plot</h2>
+          <p>This parallel plot compares bushfire risk metrics across Australian states. Each line represents a state, highlighting variations in temperature, wind speed, humidity, and pressure.</p>
+        
+          <p><strong>Key Observations:</strong></p>
+          <ul class="chart-features" style="list-style-type: disc; padding-left: 0;">
+            <li>NSW has the highest max temperature and wind speed, indicating higher bushfire risk.</li>
+<li>Tasmania shows lower pressure and higher humidity, suggesting lower risk.</li>
+          </ul>
+        
+          <div class="tooltip">
+            <strong>Hover here for chart features</strong>
+            <div class="tooltip-text">
+              <p><span>Interactive Tooltips:</span> Hover to see data points and corresponding metric values.</p>
+        
+              <p><span>Hover Highlighting:</span> When hovering over a state line, it is highlighted for easy identification and comparison.</p>
+            </div>
+          </div>
+          
+          
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Page footer -->
+  <footer>
+    &copy; 2024 Fire Data Visualization by Prakrit Dayal.
+  </footer>
 
   <script type="text/javascript">
     // Embed the main map chart
     const mapSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/main_map.json";
-    vegaEmbed('#map_vis', mapSpec).then(result => {
+    vegaEmbed('#map_vis', mapSpec, { actions: false }).then(result => { // Disable action menu (3 dots)
       console.log("Map visualization loaded", result);
     }).catch(console.warn);
 
-    // Embed the double donut chart
+    // Embed the double donut chart (Remove action buttons)
     const donutSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/double_donut.json";
-    vegaEmbed('#donut_vis', donutSpec).then(result => {
+    vegaEmbed('#donut_vis', donutSpec, { actions: false }).then(result => {
       console.log("Double donut visualization loaded", result);
     }).catch(console.warn);
 
-    // Embed the parallel chart
+    // Embed the parallel chart (Remove action buttons)
     const parallelSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/parallel.json";
-    vegaEmbed('#parallel_vis', parallelSpec).then(result => {
+    vegaEmbed('#parallel_vis', parallelSpec, { actions: false }).then(result => {
       console.log("Parallel coordinates visualization loaded", result);
     }).catch(console.warn);
   </script>
