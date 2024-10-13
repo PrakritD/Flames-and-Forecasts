@@ -5,7 +5,7 @@
   "projection": {
     "type": "mercator",
     "scale": 1200,
-    "center": [495, -28.25]
+    "center": [500, -28.25]
   },
   "config": {
     "background": "#F5F5F5", 
