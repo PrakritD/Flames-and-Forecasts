@@ -40,7 +40,7 @@
     }
 
     .main-content {
-      padding: 40px 20px;
+      padding: 50px 20px;
       background-color: #FFDAB5;
     }
 
@@ -81,7 +81,7 @@
     /* Visual container (chart) */
     .chart-container {
       width: 65%;
-      height: 400px;
+      height: 430px;
       background-color: #F5F5F5;
       border-radius: 15px;
       display: flex;
@@ -153,10 +153,10 @@
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 10px;
       background-color: #FF6A4D;
       color: white;
-      margin-top: 40px;
+      margin-top: 0px;
     }
 
     footer:hover {
@@ -240,11 +240,8 @@
               <p><span>Dropdown for Forest Type:</span> Use the dropdown menu to filter the chart by specific forest types (e.g., nature reserves, private forests).</p>
             </div>
           </div>
-          
-          
         </div>
-        
-      
+
         <!-- Chart placed on the right -->
         <div class="chart-container" id="donut_vis" style="float: right; width: 60%;">
           <!-- Donut chart will be embedded here -->
@@ -290,12 +287,38 @@
 
       </div>
 
+      <h1>Fire Risk Heatmap</h1>
+      <div class="sub-container">
+        <div class="text-container" style="float: left; width: 30%;">
+          <h2>About the Heatmap</h2>
+          <p>This heatmap shows fire risk across states by month, using green to red to represent low to high risk.</p>
+        
+          <p><strong>Key Observations:</strong></p>
+          <ul class="chart-features" style="list-style-type: disc; padding-left: 0;">
+            <li>Winter months are mostly green (low risk), while summer turns red (high risk).</li>
+            <li>SA and NT show the highest fire risk during summer.</li>
+          </ul>
+        
+          <div class="tooltip">
+            <strong>Hover here for chart features</strong>
+            <div class="tooltip-text">
+              <p><span>Interactive Tooltips:</span> Hover to view fire risk values by state and month.</p>
+            </div>
+          </div>
+        </div>
+  
+          <!-- Chart placed on the right -->
+          <div class="chart-container" id="heatmap_vis" style="float: right; width: 60%;">
+          </div>
+          <div style="clear: both;"></div> <!-- Clear floats -->
+             
+
     </div>
   </section>
 
   <!-- Page footer -->
   <footer>
-    &copy; 2024 Fire Data Visualization by Prakrit Dayal.
+    &copy; 2024 Fire Data Visualization by Prakrit Dayal
   </footer>
 
   <script type="text/javascript">
@@ -316,6 +339,14 @@
     vegaEmbed('#parallel_vis', parallelSpec, { actions: false }).then(result => {
       console.log("Parallel coordinates visualization loaded", result);
     }).catch(console.warn);
+
+    const heatmapSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/heatmap.json";
+    vegaEmbed('#heatmap_vis', heatmapSpec, { actions: false }).then(result => {
+      console.log("Heatmap visualization loaded", result);
+    }).catch(console.warn);
+
+
+
   </script>
 </body>
 </html>
