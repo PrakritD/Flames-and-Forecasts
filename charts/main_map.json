@@ -1,11 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 680,
-  "height": 500,
+  "width": 1200,
+  "height": 800,
   "projection": {
     "type": "mercator",
-    "scale": 660,
-    "center": [495, -27]
+    "scale": 1200,  // Adjusted scale for larger width
+    "center": [495, -28.25]  // Center adjusted for better fit
   },
   "params": [
     {
@@ -73,7 +73,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "stroke": "gray"
+        "stroke": "#ebebeb"
       }
     },
     {
@@ -111,7 +111,7 @@
           "legend": {
             "orient": "none",
             "direction": "vertical",
-            "legendX": 580,
+            "legendX": 1070,  // Adjust X position for size legend to fit the new width
             "legendY": 290,
             "title": "Fire Size"
           }
@@ -127,7 +127,7 @@
           "legend": {
             "orient": "none",
             "direction": "vertical",
-            "legendX": 580,
+            "legendX": 1070,  // Adjust X position for color legend to fit the new width
             "legendY": 45,
             "title": "FRP"
           }
@@ -159,7 +159,5 @@
         ]
       }
     }
-
-    
   ]
 }
