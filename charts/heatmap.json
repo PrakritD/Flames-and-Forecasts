@@ -8,7 +8,7 @@
   ],
   "mark": {
     "type": "rect",
-    "tooltip": { 
+    "tooltip": {
       "content": "data"
     }
   },
@@ -17,13 +17,24 @@
       "field": "Month",
       "type": "nominal",
       "sort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      "axis": {"labelAngle": 0, "title": null}
+      "axis": {
+        "labelAngle": 0,
+        "title": null,
+        "grid": false,
+        "ticks": false,
+        "domain": false
+      }
     },
     "y": {
       "field": "Location",
       "type": "nominal",
-      "sort": "ascending", 
-      "axis": {"title": null}
+      "sort": "ascending",
+      "axis": {
+        "title": null,
+        "grid": false,
+        "ticks": false,
+        "domain": false
+      }
     },
     "color": {
       "field": "Fire_Risk",
@@ -36,7 +47,7 @@
     "tooltip": [
       {"field": "Location", "title": "Location"},
       {"field": "Month", "title": "Month"},
-      {"field": "Fire_Risk", "title": "Fire Risk", "format": ".2f"}  
+      {"field": "Fire_Risk", "title": "Fire Risk", "format": ".2f"}
     ]
   },
   "config": {
