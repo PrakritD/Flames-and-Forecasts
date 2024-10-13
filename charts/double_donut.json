@@ -76,7 +76,7 @@
                     ],
                     "name": "Forest Type"
                   },
-                  "init": {"Forest tenure": "Total native forest"}
+                  "init": {"Forest tenure": "Total native forest"}  
                 }
               },
               "transform": [
@@ -94,17 +94,6 @@
                   {"field": "State", "title": "State", "type": "nominal"},
                   {"field": "Value", "title": "Total Area (Hectares)", "type": "quantitative"}
                 ]
-              }
-            },
-            {
-              "mark": {
-                "type": "text",
-                "align": "center",
-                "fontSize": 25,
-                "dy": -1
-              },
-              "encoding": {
-                "text": {"value": "Total Area"}
               }
             }
           ]
@@ -129,17 +118,6 @@
                   {"field": "State", "title": "State", "type": "nominal"},
                   {"field": "Value", "title": "Burnt Area (Hectares)", "type": "quantitative"}
                 ]
-              }
-            },
-            {
-              "mark": {
-                "type": "text",
-                "align": "center",
-                "fontSize": 25,
-                "dy": -1
-              },
-              "encoding": {
-                "text": {"value": "Burnt Area"}
               }
             }
           ]
