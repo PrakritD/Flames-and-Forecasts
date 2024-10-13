@@ -8,7 +8,10 @@
     "center": [495, -28.25]
   },
   "config": {
-    "background": "#F5F5F5"
+    "background": "#F5F5F5", 
+    "view": {
+      "stroke": null  
+    }
   },
   "params": [
     {
