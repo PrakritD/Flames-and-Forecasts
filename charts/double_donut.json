@@ -85,7 +85,7 @@
               ],
               "mark": {
                 "type": "arc",
-                "innerRadius": 75
+                "innerRadius": 100
               },
               "encoding": {
                 "theta": {"field": "Value", "type": "quantitative"},
