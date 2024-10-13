@@ -137,16 +137,16 @@
       },
       "encoding": {
         "x": {
-          "value": 240  // Adjusted to fit scaled chart width
+          "value": 240
         },
         "x2": {
-          "value": 720  // Adjusted to fit scaled chart width
+          "value": 720
         },
         "y": {
-          "value": 68  // Adjusted to fit scaled chart height
+          "value": 68
         },
         "y2": {
-          "value": 87  // Adjusted to fit scaled chart height
+          "value": 87
         }
       }
     },
@@ -154,8 +154,8 @@
       "mark": {
         "type": "text",
         "align": "center",
-        "x": 480,  // Adjusted to fit scaled chart width
-        "y": 77,  // Adjusted to fit scaled chart height
+        "x": 480,
+        "y": 77,
         "fontSize": 12,
         "fontStyle": "italic"
       },
@@ -177,16 +177,16 @@
       },
       "encoding": {
         "x": {
-          "value": 280  // Adjusted for the line position based on scaled chart
+          "value": 280
         },
         "x2": {
-          "value": 450  // Adjusted for the line position based on scaled chart
+          "value": 450
         },
         "y": {
-          "value": 1 // Line start (adjusted based on scaled chart)
+          "value": 1
         },
         "y2": {
-          "value": 70  // Line end (adjusted based on scaled chart)
+          "value": 70
         }
       }
     }
