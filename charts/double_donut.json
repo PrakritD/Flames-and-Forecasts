@@ -7,12 +7,10 @@
     "background": "#F5F5F5",
     "style": {
       "guide-label": {
-        "fill": "black",
-        "font": "Avant Garde"
+        "fill": "black"
       },
       "guide-title": {
-        "fill": "black",
-        "font": "Avant Garde"
+        "fill": "black"
       }
     },
     "arc": {
@@ -20,8 +18,7 @@
     },
     "tooltip": {
       "background": "#F5F5F5",
-      "color": "black",
-      "font": "Avant Garde"
+      "color": "black"
     }
   },
   "transform": [
@@ -49,8 +46,8 @@
     {
       "hconcat": [
         {
-          "width": 400,
-          "height": 400,
+          "width": 300,
+          "height": 300,
           "layer": [
             {
               "selection": {
@@ -60,25 +57,26 @@
                   "bind": {
                     "input": "select",
                     "options": [
+                      "Total native forest", 
                       "Leasehold forest", 
                       "Multiple-use public forest", 
                       "Nature conservation reserve", 
                       "Other Crown land", 
                       "Private forest", 
-                      "Unresolved tenure", 
-                      "Total native forest"
+                      "Unresolved tenure"
                     ],
                     "labels": [
+                      "Total Forest", 
                       "Leasehold Forest", 
                       "Multiple-use Public Forest", 
                       "Nature Conservation Reserve", 
                       "Other Crown Land", 
                       "Private Forest", 
-                      "Unresolved Tenure", 
-                      "Total Forest"
+                      "Unresolved Tenure"
                     ],
                     "name": "Forest Type"
-                  }
+                  },
+                  "init": {"Forest tenure": "Total native forest"}  // Default to Total Forest
                 }
               },
               "transform": [
@@ -87,7 +85,7 @@
               ],
               "mark": {
                 "type": "arc",
-                "innerRadius": 150
+                "innerRadius": 75
               },
               "encoding": {
                 "theta": {"field": "Value", "type": "quantitative"},
@@ -102,8 +100,7 @@
               "mark": {
                 "type": "text",
                 "align": "center",
-                "fontSize": 50,
-                "font": "Avant Garde",
+                "fontSize": 25,
                 "dy": -1
               },
               "encoding": {
@@ -113,9 +110,8 @@
           ]
         },
         {
-          "width": 400,
-          "height": 400
-          ,
+          "width": 300,
+          "height": 300,
           "layer": [
             {
               "transform": [
@@ -124,7 +120,7 @@
               ],
               "mark": {
                 "type": "arc",
-                "innerRadius": 150
+                "innerRadius": 100
               },
               "encoding": {
                 "theta": {"field": "Value", "type": "quantitative"},
@@ -139,8 +135,7 @@
               "mark": {
                 "type": "text",
                 "align": "center",
-                "fontSize": 50,
-                "font": "Avant Garde",
+                "fontSize": 25,
                 "dy": -1
               },
               "encoding": {
