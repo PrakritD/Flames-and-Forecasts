@@ -46,8 +46,8 @@
     {
       "hconcat": [
         {
-          "width": 350,
-          "height": 350,
+          "width": 325,
+          "height": 325,
           "layer": [
             {
               "selection": {
@@ -99,8 +99,8 @@
           ]
         },
         {
-          "width": 350,
-          "height": 350,
+          "width": 325,
+          "height": 325,
           "layer": [
             {
               "transform": [
