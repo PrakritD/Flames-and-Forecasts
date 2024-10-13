@@ -6,6 +6,9 @@
   },
   "width": 750,
   "height": 400,
+  "config": {
+    "background": "#F5F5F5"
+  },
   "transform": [
     {
       "fold": [
@@ -70,21 +73,23 @@
           "title": "State"
         },
         "opacity": {
-          "condition": {"param": "hover", "value": 1},
-          "value": 0.3
+          "condition": {
+            "test": "datum.Variable == 'MaxTemp' && datum.Location == 'NSW' && datum.NormalizedValue >= 0.3 && datum.NormalizedValue <= 0.6",
+            "value": 0.3
+          },
+          "value": 1
         },
         "tooltip": [
           {"field": "Location", "type": "nominal", "title": "State"},
           {"field": "VariableFull", "type": "nominal", "title": "Weather Attribute"},
-          {"field": "Value", "type": "quantitative", "title": "Value"}
+          {
+            "field": "Value",
+            "type": "quantitative",
+            "title": "Value",
+            "format": ".2f"
+          }
         ]
-      },
-      "params": [
-        {
-          "name": "hover",
-          "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
-        }
-      ]
+      }
     },
     {
       "mark": {
@@ -114,8 +119,75 @@
         "tooltip": [
           {"field": "Location", "type": "nominal", "title": "State"},
           {"field": "VariableFull", "type": "nominal", "title": "Weather Attribute"},
-          {"field": "Value", "type": "quantitative", "title": "Value"}
+          {
+            "field": "Value",
+            "type": "quantitative",
+            "title": "Value",
+            "format": ".2f"
+          }
         ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rect",
+        "color": "white",
+        "opacity": 0.02,
+        "cornerRadius": 5
+      },
+      "encoding": {
+        "x": {
+          "value": 240  // Adjusted to fit scaled chart width
+        },
+        "x2": {
+          "value": 720  // Adjusted to fit scaled chart width
+        },
+        "y": {
+          "value": 68  // Adjusted to fit scaled chart height
+        },
+        "y2": {
+          "value": 87  // Adjusted to fit scaled chart height
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "x": 480,  // Adjusted to fit scaled chart width
+        "y": 77,  // Adjusted to fit scaled chart height
+        "fontSize": 12,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {
+          "value": "NSW exhibits a combination of weather attributes highly conducive to wildfire conditions."
+        },
+        "color": {
+          "value": "black"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "black",
+        "strokeWidth": 1.2,
+        "opacity": 0.65
+      },
+      "encoding": {
+        "x": {
+          "value": 280  // Adjusted for the line position based on scaled chart
+        },
+        "x2": {
+          "value": 450  // Adjusted for the line position based on scaled chart
+        },
+        "y": {
+          "value": 1 // Line start (adjusted based on scaled chart)
+        },
+        "y2": {
+          "value": 70  // Line end (adjusted based on scaled chart)
+        }
       }
     }
   ]
