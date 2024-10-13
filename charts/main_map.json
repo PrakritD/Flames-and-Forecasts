@@ -4,8 +4,8 @@
   "height": 800,
   "projection": {
     "type": "mercator",
-    "scale": 1200,
-    "center": [495, -28.25]
+    "scale": 1200,  
+    "center": [495, -28.25]  
   },
   "params": [
     {
@@ -86,6 +86,7 @@
         },
         {
           "sort": [{"field": "frp", "order": "descending"}]
+        }
       ],
       "mark": {
         "type": "circle",
@@ -110,7 +111,7 @@
           "legend": {
             "orient": "none",
             "direction": "vertical",
-            "legendX": 1070,
+            "legendX": 1070,  
             "legendY": 290,
             "title": "Fire Size"
           }
@@ -126,11 +127,12 @@
           "legend": {
             "orient": "none",
             "direction": "vertical",
-            "legendX": 1070,
+            "legendX": 1070, 
             "legendY": 45,
             "title": "FRP"
           }
         },
+        
         "tooltip": [
           {
             "field": "acq_date",
