@@ -182,8 +182,7 @@
         "align": "center",
         "x": 480,
         "y": 77,
-        "fontSize": 12,
-        "fontStyle": "italic"
+        "fontSize": 12
       },
       "encoding": {
         "text": {
