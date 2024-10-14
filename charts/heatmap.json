@@ -37,6 +37,7 @@
       }
     },
     "color": {
+            "title": "Fire Risk",
       "field": "Fire_Risk",
       "type": "quantitative",
       "scale": {
