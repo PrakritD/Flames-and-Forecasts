@@ -82,7 +82,7 @@
           "type": "nominal",
           "title": "State",
           "legend": {
-            "offset": "8" 
+            "offset": "10" 
           }
         },
         "opacity": {
