@@ -22,7 +22,8 @@
         "title": null,
         "grid": false,
         "ticks": false,
-        "domain": false
+        "domain": false,
+        "labelFontSize": 12
       }
     },
     "y": {
@@ -33,7 +34,8 @@
         "title": null,
         "grid": false,
         "ticks": false,
-        "domain": false
+        "domain": false,
+        "labelFontSize": 12
       }
     },
     "color": {
