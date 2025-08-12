@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/data/fire_risk.csv"
+    "url": "https://raw.githubusercontent.com/prakritd/Flames-and-Forecasts/refs/heads/main/data/fire_risk.csv"
   },
   "transform": [
     {"calculate": "datum['Fire_Risk_Normalized']", "as": "Fire_Risk"}

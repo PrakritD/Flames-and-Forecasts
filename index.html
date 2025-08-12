@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <link rel="stylesheet" href="https://rawcdn.githack.com/prakritd2/Assign2/main/css/styles.css">
+  <link rel="stylesheet" href="https://rawcdn.githack.com/prakritd/Flames-and-Forecasts/main/css/styles.css">
 
 </head>
 
@@ -191,25 +191,25 @@
 
   <script type="text/javascript">
     // Embed the main map chart
-    const mapSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/main_map.json";
+    const mapSpec = "https://raw.githubusercontent.com/prakritd/Flames-and-Forecasts/refs/heads/main/charts/main_map.json";
     vegaEmbed('#map_vis', mapSpec, { actions: false }).then(result => { // Disable action menu (3 dots)
       console.log("Map visualization loaded", result);
     }).catch(console.warn);
 
     // Embed the double donut chart (Remove action buttons)
-    const donutSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/double_donut.json";
+    const donutSpec = "https://raw.githubusercontent.com/prakritd/Flames-and-Forecasts/refs/heads/main/charts/double_donut.json";
     vegaEmbed('#donut_vis', donutSpec, { actions: false }).then(result => {
       console.log("Double donut visualization loaded", result);
     }).catch(console.warn);
 
     // Embed the parallel chart (Remove action buttons)
-    const parallelSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/parallel.json";
+    const parallelSpec = "https://raw.githubusercontent.com/prakritd/Flames-and-Forecasts/refs/heads/main/charts/parallel.json";
     vegaEmbed('#parallel_vis', parallelSpec, { actions: false }).then(result => {
       console.log("Parallel coordinates visualization loaded", result);
     }).catch(console.warn);
 
     // Embed the heatmap (Remove action buttons)
-    const heatmapSpec = "https://raw.githubusercontent.com/prakritd2/Assign2/refs/heads/main/charts/heatmap.json";
+    const heatmapSpec = "https://raw.githubusercontent.com/prakritd/Flames-and-Forecasts/refs/heads/main/charts/heatmap.json";
     vegaEmbed('#heatmap_vis', heatmapSpec, { actions: false }).then(result => {
       console.log("Heatmap visualization loaded", result);
     }).catch(console.warn);
