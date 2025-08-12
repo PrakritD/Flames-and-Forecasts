@@ -11,7 +11,8 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/PrakritD/Flames-and-Forecasts/refs/heads/main/css/styles.css">
+  <link rel="stylesheet" href="https://PrakritD.github.io/Flames-and-Forecasts/css/styles.css">
+
 
 </head>
 
@@ -209,7 +210,7 @@
     }).catch(console.warn);
 
     // Embed the heatmap (Remove action buttons)
-    const heatmapSpec = "https://raw.githubusercontent.com/PrakritD/Flames-and-Forecasts/refs/heads/main/charts/heatmap.json";
+    const heatmapSpec = "https://raw.githubusercontent.com/PrakritFlames-and-Forecasts/refs/heads/main/charts/heatmap.json";
     vegaEmbed('#heatmap_vis', heatmapSpec, { actions: false }).then(result => {
       console.log("Heatmap visualization loaded", result);
     }).catch(console.warn);
